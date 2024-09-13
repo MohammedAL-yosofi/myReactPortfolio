@@ -1,0 +1,183 @@
+/* ===========================
+ table of contents
+==============================
+1. Header Design
+2. Button & icon
+3- Modal == pop up
+4- Responsive Design (media query)*/
+
+/* ========================
+    1. Header Design
+=========================== */
+
+/* header{
+  background-color: red;
+  position: fixed;
+  z-index: 15;
+  width: 100%;
+} */
+
+header.flex {
+  background-color:var(--secondary);
+  position: fixed;
+  width: inherit;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 15;
+  justify-content: space-between;
+  padding: 5px 2.4rem;
+  border-bottom: 1px aqua solid;
+  /* margin-top: 1.2rem; */
+}
+
+header.flex nav {
+  background-color: var(--bgHeader);
+  padding: 0.77rem 1.6rem;
+  border-radius: 55px;
+  box-shadow: 1px 1px 40px #2323242a;
+}
+
+header ul.flex {
+  gap: 20px;
+}
+
+header ul li a {
+  color: var(--title);
+  opacity: 0.9;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+header ul li a:hover {
+  color: var(--blue);
+  opacity: 1;
+  font-size: 0.9rem;
+}
+
+header button {
+  font-size: 1.2rem;
+}
+
+header button.menu {
+  display: none;
+}
+
+/* ========================
+    2. Button & icon
+=========================== */
+header .icon-menu,
+header button.mode {
+  background-color: var(--bgHeader);
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+
+  justify-content: center;
+  text-align: center;
+
+  color: var(--subtitle);
+  border: 1px solid rgba(244, 165, 96, 0.249);
+  transition: 0.2s;
+  box-shadow: 1px 1px 40px rgba(35, 35, 36, 0.165);
+}
+
+header .icon-sun {
+  color: rgb(255, 165, 0);
+}
+
+header .icon-menu:hover,
+header button.mode:hover {
+  color: var(--title);
+  border: 1px solid rgb(244, 165, 96);
+}
+
+header .icon-close {
+  font-size: 1.5rem;
+  color: var(--subtitle);
+  transition: 0.3s;
+}
+
+header .icon-close:hover {
+  font-size: 1.7rem;
+  color: crimson;
+  transform: rotate(180deg);
+  rotate : 180deg;
+}
+
+/* ========================
+    3- Modal == pop up
+=========================== */
+header .fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 11;
+  background-color: rgba(40, 40, 48, 0.91);
+
+  /* filter: blur(8px); */
+  backdrop-filter: blur(4px);
+}
+
+@keyframes mymove {
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+header .fixed ul.modal {
+  animation: mymove 0.77s 1;
+  width: 85%;
+margin-inline: auto;
+
+
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--secondary);
+}
+
+header .fixed ul.modal li {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.77rem;
+  padding-top: 0.5rem;
+}
+
+header .fixed ul.modal li:first-child {
+  text-align: right;
+  border: none;
+  padding-bottom: 0;
+  padding-top: 0.2rem;
+  margin-bottom: -1rem;
+}
+
+header .fixed ul.modal li:last-child {
+  border: none;
+}
+
+header .fixed ul.modal li a {
+  font-size: 1rem;
+}
+
+/* =====================================
+  4- Responsive Design (media query)
+======================================== */
+@media (max-width: 768px) {
+  header.flex nav {
+    display: none;
+  
+  }
+
+  header button.menu {
+    display: block;
+  }
+}
