@@ -29,7 +29,6 @@ section.hero .icon-verified {
 
 section.hero .avatar {
   width: 88px;
-
   border-radius: 50%;
   border: 1px solid darkorange;
   padding: 1px;
@@ -74,5 +73,11 @@ section.hero .animation {
 @media (max-width: 1250px) {
   section.hero .animation {
     display: none;
+  }
+}
+
+@media (max-width : 600px){
+  section.hero h1.title {
+  font-size: 1.55rem;
   }
 }

@@ -53,7 +53,7 @@ const Contact = () => {
 
           {state.succeeded && (
             <p
-              className="flex"
+              className="flex sub-title"
               style={{ fontSize: "18px", marginTop: "1.7rem" }}
             >
               <Lottie

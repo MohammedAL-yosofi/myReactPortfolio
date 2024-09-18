@@ -28,7 +28,7 @@ header.flex {
   margin-right: auto;
   z-index: 15;
   justify-content: space-between;
-  padding: 5px 2.4rem;
+  padding: 0.6rem 2.4rem;
   border-bottom: 1px aqua solid;
   /* margin-top: 1.2rem; */
 }

@@ -28,7 +28,8 @@ const Hero = () => {
           transition={{ duration: 2 }}
           className="title"
         >
-          Software designer, founder, and amateur astronaut.
+          Software Engineering, <br/>
+          just intrested in web devlopment &#128074;
         </motion.h1>
 
         <p className="sub-title">
