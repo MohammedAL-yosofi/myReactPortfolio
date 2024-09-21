@@ -5,7 +5,7 @@
 2. Right Section ==> animation*/
 
 section.hero {
-  margin-top: 3rem;
+  margin-top: 4.5rem;
 }
 
 /* ========================
@@ -29,8 +29,11 @@ section.hero .icon-verified {
 
 section.hero .avatar {
   width: 88px;
+  height: 108px;
   border-radius: 50%;
-  border: 1px solid darkorange;
+  border: 1px solid aqua;
+  object-fit: cover;
+  object-position: center;
   padding: 1px;
   box-shadow: 2px 2px 40px rgba(203, 200, 200, 0.586) inset;
 }
@@ -66,7 +69,7 @@ section.hero .all-icons .icon:hover {
     2. Right Section ==> animation
 ====================================== */
 section.hero .animation {
-  width: 100%;
+  width: 40%;
   translate: 100px 55px;
 }
 

@@ -11,49 +11,45 @@ export const myProjects = [
     imgPath: "./images/2.jpg",
     description: "",
   },
-  { projectTitle: "css project", category: ["css"], imgPath: "./images/3.jpg" },
+  { projectTitle: "simple css dashboard", category: ["css"], imgPath: "./images/library.jpg" },
+  { projectTitle: "library website with dark mode", category: ["css"], imgPath: "./images/libdownloadbook.jpg" ,
+  description : "",},
+  
   {
-    projectTitle: "react project",
+    projectTitle: "react portfolio",
     category: ["react"],
-    imgPath: "./images/4.jpg",
+    imgPath: "./images/myPortfolio.png",
     description: "",
   },
-  { projectTitle: "css project", category: ["css"], imgPath: "./images/5.jpg" },
-
-  {
-    projectTitle: "javaScript project",
-    category: ["js"],
-    imgPath: "./images/6.jpg",
-    description: "",
+  { projectTitle: "css project", 
+  category: ["css"], 
+  imgPath: "./images/5.jpg",
+  description : "",
   },
   {
-    projectTitle: "node project",
-    category: ["node"],
-    imgPath: "./images/7.jpg",
-    description: "",
-  },
-  {
-    projectTitle: "node project",
-    category: ["node"],
-    imgPath: "./images/8.jpg",
-    description: "",
-  },
-  {
-    projectTitle: "javaScript project",
-    category: ["js"],
-    imgPath: "./images/9.jpg",
-    description: "",
-  },
-  {
-    projectTitle:"ecommerce website",
+    projectTitle:'ecommerce website (not completed)',
     category : ['laravel'],
-    imgPath : "",
+    imgPath : "./images/coming-soon.jpg",
     description: "",
   } ,
   {
-    projectTitle:"ecommerce website with Tailwindcss",
-    category : ['tailwind'],
-    imgPath : "",
+    projectTitle:"simple ecommerce website with bootstrap3",
+    category : ['tailwind','bootstrap'],
+    imgPath: "./images/bootstrap3-2.jpg",
+    description: "",
+  }
+  ,
+  {
+    projectTitle:"simple ecommerce website with php",
+    category : ['php'],
+    imgPath: "./images/coming-soon.jpg",
+    description: "",
+  }
+  ,
+  {
+    projectTitle:"ecommerce website with tailwindcss",
+    category : ['tailwind','bootstrap'],
+    imgPath: "./images/tailwindEcommerce.jpg",
     description: "",
   }
 ];

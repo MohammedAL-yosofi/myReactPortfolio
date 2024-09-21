@@ -44,11 +44,11 @@ const Main = () => {
 
         <button
           onClick={() => {
-            handleClick("js");
+            handleClick("tailwind");
           }}
-          className={currentActive === "js" ? "active" : null}
+          className={currentActive === "tailwind" ? "active" : null}
         >
-          tailwindcss & alpin
+          tailwind & alpin
         </button>
         <button
           onClick={() => {
@@ -94,6 +94,7 @@ const Main = () => {
                 <div style={{ width: "266px" }} className="box">
                   <h1 className="title">{item.projectTitle}</h1>
                   <p className="sub-title">
+                    {item.description ==="" ? 'no ' : 'yes'}
                     Lorem ipsum dolor sit amet consectetur elit adipisicing . Ex
                     tempore dolor in, accusantium laudantium accusamus.
                   </p>
