@@ -66,7 +66,7 @@ function App() {
       if (imagesLoaded === images.length) {
         setTimeout(() => {
           setIsLoading(false);
-        }, 4000);
+        }, 500);
       }
     };
 
@@ -82,7 +82,7 @@ function App() {
     if (images.length === 0 || imagesLoaded === images.length) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 4000);
+      }, 500);
     }
   }, []);
 
