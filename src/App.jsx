@@ -26,6 +26,15 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
+  useEffect(() => {
+    if (isLoading) {
+      document.body.classList.add("scroll-lock"); // Add scroll-lock class when loading
+    } else {
+      document.body.classList.remove("scroll-lock"); // Remove scroll-lock class when not loading
+    }
+  }, [isLoading]);
+
 
   // Save the page scroll position on page unload
   useEffect(() => {
@@ -57,7 +66,7 @@ function App() {
       if (imagesLoaded === images.length) {
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+        }, 4000);
       }
     };
 
@@ -73,7 +82,7 @@ function App() {
     if (images.length === 0 || imagesLoaded === images.length) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 4000);
     }
   }, []);
 
