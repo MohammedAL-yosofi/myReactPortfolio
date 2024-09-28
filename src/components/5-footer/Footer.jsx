@@ -2,7 +2,7 @@ import React from "react";
 import "./footer.css";
 const Footer = () => {
   return (
-    <footer className="flex">
+    <footer id="about" className="flex">
       <ul className="flex">
         <li>
           <a href="">About</a>

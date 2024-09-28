@@ -27,7 +27,7 @@ html {
   --title: aqua;
   /* --subtitle: rgb(161 161 170); */
   --subtitle: rgb(196, 247, 247);
-
+  --backdrop: rgba(50, 50, 50, 0.64);
   --bgHeader: rgb(39, 39, 42);
   --blue: rgb(93, 188, 252);
 
@@ -42,10 +42,9 @@ html {
   --gray-500: #e6e5e5;
   --title: rgb(39 39 42);
   --subtitle: rgb(82 82 91);
-
+  --backdrop: rgba(200, 200, 200, 0.74);
   --bgHeader: rgb(253, 253, 253);
   --blue: rgb(0, 149, 246);
-
   --icon-hover: #333;
 }
 

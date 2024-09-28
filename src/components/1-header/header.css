@@ -16,6 +16,12 @@
   z-index: 15;
   width: 100%;
 } */
+.scroll-lock {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
 header.flex {
   background-color:var(--secondary);
