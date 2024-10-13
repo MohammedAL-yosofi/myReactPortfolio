@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 function App() {
   const [showScrollBTN, setShowScrollBTN] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showTimeoutMessage, setShowTimeoutMessage] = useState(false);
 
-  // Handle scroll for the "scroll to top" button 
+  // Handle scroll for the "scroll to top" button visibility
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -26,7 +27,8 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
+  // Disable scrolling when loading
   useEffect(() => {
     if (isLoading) {
       document.body.classList.add("scroll-lock"); // Add scroll-lock class when loading
@@ -35,28 +37,7 @@ function App() {
     }
   }, [isLoading]);
 
-
-  // Save the page scroll position on page unload
-  useEffect(() => {
-    const saveScrollPosition = () => {
-      localStorage.setItem("pageScrollPosition", window.scrollY);
-    };
-
-    window.addEventListener("beforeunload", saveScrollPosition);
-
-    return () => {
-      window.removeEventListener("beforeunload", saveScrollPosition);
-    };
-  }, []);
-
-  // Restore the page scroll position after page reload
-  useEffect(() => {
-    const pageScrollPosition = localStorage.getItem("pageScrollPosition");
-    if (pageScrollPosition) {
-      window.scrollTo(0, parseInt(pageScrollPosition, 10)); 
-    }
-  }, []);
-
+  // Ensure loader stays for at least 0.5 seconds and waits for images to load
   useEffect(() => {
     const images = document.querySelectorAll("img");
     let imagesLoaded = 0;
@@ -65,8 +46,8 @@ function App() {
       imagesLoaded++;
       if (imagesLoaded === images.length) {
         setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
+          setIsLoading(false); // Finish loading
+        }, 500); // Ensure loader is visible for 0.5 seconds
       }
     };
 
@@ -75,28 +56,54 @@ function App() {
         checkImagesLoaded();
       } else {
         img.addEventListener("load", checkImagesLoaded);
-        img.addEventListener("error", checkImagesLoaded); 
+        img.addEventListener("error", checkImagesLoaded); // Handle errors
       }
     });
 
+    // If there are no images or all load instantly
     if (images.length === 0 || imagesLoaded === images.length) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 500); // 0.5s delay
     }
   }, []);
 
+  // Timeout for showing "Network Timeout" message if loading takes more than 5 seconds
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (isLoading) {
+        setShowTimeoutMessage(true); // Show timeout message
+        setIsLoading(false); // Stop loading
+        setTimeout(() => {
+          setShowTimeoutMessage(false); // Hide timeout message after 2 seconds
+        }, 2000);
+      }
+    }, 5000); // 5 seconds timeout
+
+    return () => {
+      clearTimeout(timeoutId); // Clear timeout on unmount
+    };
+  }, [isLoading]);
+
   return (
     <>
-      {isLoading && <Loader />}
-      <div id="up" className="container">
+      {isLoading && <Loader />} {/* Show loader when loading */}
+
+      {/* Network Timeout Message */}
+      {showTimeoutMessage && (
+        <div className={`timeout-message ${showTimeoutMessage ? 'show-message' : ''}`}>
+          Network Timeout
+        </div>
+      )}
+
+      <div id="up" className="container" >
         <Header />
         <div>
           <Hero />
           <div className="divider" />
           <Main />
           <div className="divider" />
-          <Contact id="contact" />
+          <Contact />
           <div className="divider" />
           <Footer />
 

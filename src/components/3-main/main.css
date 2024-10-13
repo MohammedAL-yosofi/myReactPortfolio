@@ -185,3 +185,27 @@ main section.right-section::before
     font-size: 0.9rem;
   }
 }
+
+
+
+
+
+/* Styling the timeout message */
+.timeout-message {
+  position: fixed;
+  top: -50px; /* Initially hidden above the viewport */
+  left: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  transition: top 0.5s ease; /* Sliding down animation */
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Show message by sliding it down */
+.show-message {
+  top: 0; /* Slide down to the top */
+}
