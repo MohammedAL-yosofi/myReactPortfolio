@@ -3,9 +3,54 @@ import { useForm, ValidationError } from "@formspree/react";
 import Lottie from "lottie-react";
 import doneAnimation from "../../animation/done.json";
 import contactAnimation from "../../animation/contact.json";
+import { useEffect, useState } from "react";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("myzglwqe");
+  const [visitorID, setVisitorID] = useState(null);
+
+  // Function to generate a random ID
+  const generateRandomID = () => {
+    return `visitor-${Math.floor(Math.random() * 1000000)}`;
+  };
+
+  useEffect(() => {
+    let id = localStorage.getItem("visitorID");
+
+    if (!id) {
+      // Generate a new ID if none exists
+      id = generateRandomID();
+      localStorage.setItem("visitorID", id);
+      console.log("New visitor ID assigned:", id);
+
+      // Automatically submit a form with the new visitor ID
+      const formData = new FormData();
+      formData.append("visitorID", id);
+      formData.append("message", `You have a new visitor ID: ${id}`);
+      formData.append("email", "no-reply@yourdomain.com"); // Dummy email for formspree
+      
+      // Automatically post to Formspree
+      fetch("https://formspree.io/f/myzglwqe", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Visitor ID sent via email");
+        } else {
+          console.error("Failed to send visitor ID");
+        }
+      });
+    } else {
+      console.log("Returning visitor with ID:", id);
+    }
+
+    // Set the visitor ID to state
+    setVisitorID(id);
+  }, []);
 
   return (
     <section id="contact" className="contact-me">
@@ -16,7 +61,6 @@ const Contact = () => {
       <p className="sub-title">
         Contact me for more information and Get notified when I publish
         something new.
-        
       </p>
 
       <div style={{ justifyContent: "space-between" }} className="flex">
@@ -47,6 +91,9 @@ const Contact = () => {
             />
           </div>
 
+          {/* Hidden input to send visitor ID */}
+          <input type="hidden" name="visitorID" value={visitorID || ""} />
+
           <button type="submit" disabled={state.submitting} className="submit">
             {state.submitting ? "Submitting ..." : "Submit"}
           </button>
@@ -65,7 +112,7 @@ const Contact = () => {
             </p>
           )}
         </form>
-        <div className=" animation">
+        <div className="animation">
           <Lottie
             className="contact-animation"
             style={{ height: 355 }}
