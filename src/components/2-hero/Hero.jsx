@@ -28,12 +28,12 @@ const Hero = () => {
           transition={{ duration: 2 }}
           className="title"
         >
-          Software Engineering, <br/>
-          just intrested in web devlopment &#128074;
+          Software Engneer, <br/>
+          just intrested in web devlopment (full stack developer)  &#128074;
         </motion.h1>
 
         <p className="sub-title">
-          I’m Mohammed Fuad ,
+          I’m Mohammed Fuad Alyosofi ,
         </p>
 
         <div className="all-icons flex">
