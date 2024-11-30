@@ -15,7 +15,7 @@ const Hero = () => {
             initial={{ transform: "scale(0)" }}
             animate={{ transform: "scale(1.1)" }}
             transition={{ damping: 6, type: "spring", stiffness: 100 }}
-            src="./images/myprof.jpg"
+            src="./images/my1.jpg"
             className="avatar"
             alt=""
           />
@@ -28,8 +28,8 @@ const Hero = () => {
           transition={{ duration: 2 }}
           className="title"
         >
-          Software Engneer, <br/>
-          just intrested in web devlopment (full stack developer)  &#128074;
+          Software Engineer, <br/>
+          just intrested in web devlopment (Full Stack Developer)  &#128074;
         </motion.h1>
 
         <p className="sub-title">
