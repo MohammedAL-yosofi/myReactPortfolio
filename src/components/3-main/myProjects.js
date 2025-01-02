@@ -1,16 +1,4 @@
 export const myProjects = [
-  {
-    projectTitle: "react project",
-    category: ["react"],
-    imgPath: "./images/1.jpg",
-    description: "",
-  },
-  {
-    projectTitle: "react & css project",
-    category: ["react", "css"],
-    imgPath: "./images/2.jpg",
-    description: "",
-  },
   { projectTitle: "simple css dashboard", category: ["css"], imgPath: "./images/library.jpg" },
   { projectTitle: "library website with dark mode", category: ["css"], imgPath: "./images/libdownloadbook.jpg" ,
   description : "",},
@@ -20,11 +8,6 @@ export const myProjects = [
     category: ["react"],
     imgPath: "./images/myPortfolio.png",
     description: "",
-  },
-  { projectTitle: "css project", 
-  category: ["css"], 
-  imgPath: "./images/5.jpg",
-  description : "",
   },
   {
     projectTitle:'ecommerce website (not completed)',
@@ -40,7 +23,14 @@ export const myProjects = [
   }
   ,
   {
-    projectTitle:"simple ecommerce website with php",
+    projectTitle:"simple ecommerce website",
+    category : ['php'],
+    imgPath: "./images/coming-soon.jpg",
+    description: "",
+  }
+  ,
+  {
+    projectTitle:"library managment sys",
     category : ['php'],
     imgPath: "./images/coming-soon.jpg",
     description: "",
@@ -51,5 +41,22 @@ export const myProjects = [
     category : ['tailwind','bootstrap'],
     imgPath: "./images/tailwindEcommerce.jpg",
     description: "",
-  }
+  },
+    {
+    projectTitle: "react project",
+    category: ["react"],
+    imgPath: "./images/1.jpg",
+    description: "",
+  },
+  {
+    projectTitle: "react & css project",
+    category: ["react", "css"],
+    imgPath: "./images/2.jpg",
+    description: "",
+  },
+    { projectTitle: "html and css project", 
+  category: ["css"], 
+  imgPath: "./images/5.jpg",
+  description : "",
+  },
 ];
