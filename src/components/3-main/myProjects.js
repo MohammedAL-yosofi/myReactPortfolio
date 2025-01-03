@@ -2,7 +2,6 @@ export const myProjects = [
   { projectTitle: "simple css dashboard", category: ["css"], imgPath: "./images/library.jpg" },
   { projectTitle: "library website with dark mode", category: ["css"], imgPath: "./images/libdownloadbook.jpg" ,
   description : "",},
-  
   {
     projectTitle: "react portfolio",
     category: ["react"],
@@ -23,14 +22,7 @@ export const myProjects = [
   }
   ,
   {
-    projectTitle:"simple ecommerce website",
-    category : ['php'],
-    imgPath: "./images/coming-soon.jpg",
-    description: "",
-  }
-  ,
-  {
-    projectTitle:"library managment sys",
+    projectTitle:"simple ecommerce website with php",
     category : ['php'],
     imgPath: "./images/coming-soon.jpg",
     description: "",
@@ -54,9 +46,9 @@ export const myProjects = [
     imgPath: "./images/2.jpg",
     description: "",
   },
-    { projectTitle: "html and css project", 
+    { projectTitle: "css project", 
   category: ["css"], 
   imgPath: "./images/5.jpg",
   description : "",
-  },
+  }
 ];
