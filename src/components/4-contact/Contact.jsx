@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 const Contact = () => {
   const [state, handleSubmit] = useForm("myzglwqe");
   const [visitorID, setVisitorID] = useState(null);
+  const [localTime, setLocalTime] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Function to generate a random ID
   const generateRandomID = () => {
@@ -16,30 +18,34 @@ const Contact = () => {
 
   useEffect(() => {
     let id = localStorage.getItem("visitorID");
+    let submitted = localStorage.getItem("formSubmitted");
+
+    if (submitted === "true") {
+      setIsSubmitted(true);
+    }
 
     if (!id) {
-      // Generate a new ID if none exists
       id = generateRandomID();
       localStorage.setItem("visitorID", id);
       console.log("New visitor ID assigned:", id);
 
-      // Automatically submit a form with the new visitor ID
+      const userLocalTime = new Date().toLocaleString();
+
       const formData = new FormData();
       formData.append("visitorID", id);
-      formData.append("message", `You have a new visitor ID: ${id}`);
-      formData.append("email", "no-reply@yourdomain.com"); // Dummy email for formspree
-      
-      // Automatically post to Formspree
+      formData.append("message", `New visitor ID: ${id}`);
+      formData.append("email", "no-reply@yourdomain.com");
+      formData.append("localTime", userLocalTime);
+
       fetch("https://formspree.io/f/myzglwqe", {
         method: "POST",
         body: formData,
         headers: {
           "Accept": "application/json",
         },
-      })
-      .then((response) => {
+      }).then((response) => {
         if (response.ok) {
-          console.log("Visitor ID sent via email");
+          console.log("Visitor ID and local time sent via email");
         } else {
           console.error("Failed to send visitor ID");
         }
@@ -48,9 +54,23 @@ const Contact = () => {
       console.log("Returning visitor with ID:", id);
     }
 
-    // Set the visitor ID to state
     setVisitorID(id);
   }, []);
+
+  // Capture current local time before submission
+  const handleCustomSubmit = (event) => {
+    event.preventDefault();
+    const userLocalTime = new Date().toLocaleString();
+
+    const formData = new FormData(event.target);
+    formData.append("localTime", userLocalTime);
+
+    handleSubmit(formData);
+
+    // Mark form as submitted in localStorage
+    setIsSubmitted(true);
+    localStorage.setItem("formSubmitted", "true");
+  };
 
   return (
     <section id="contact" className="contact-me">
@@ -59,12 +79,12 @@ const Contact = () => {
         Contact me
       </h1>
       <p className="sub-title">
-        Contact me for more information and Get notified when I publish
+        Contact me for more information and get notified when I publish
         something new.
       </p>
 
       <div style={{ justifyContent: "space-between" }} className="flex">
-        <form onSubmit={handleSubmit} className="">
+        <form onSubmit={handleCustomSubmit} className="">
           <div className="flex">
             <label htmlFor="email">Email Address:</label>
             <input
@@ -73,51 +93,36 @@ const Contact = () => {
               type="email"
               name="email"
               id="email"
+              disabled={isSubmitted} // Disable input after submission
             />
-            <ValidationError
-              prefix="Email"
-              field="email"
-              errors={state.errors}
-            />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </div>
 
           <div className="flex" style={{ marginTop: "24px" }}>
             <label htmlFor="message">Your message:</label>
-            <textarea required name="message" id="message"></textarea>
-            <ValidationError
-              prefix="Message"
-              field="message"
-              errors={state.errors}
-            />
+            <textarea required name="message" id="message" disabled={isSubmitted} />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </div>
 
-          {/* Hidden input to send visitor ID */}
+          {/* Hidden inputs for visitor ID and local time */}
           <input type="hidden" name="visitorID" value={visitorID || ""} />
+          <input type="hidden" name="localTime" value={localTime} />
 
-          <button type="submit" disabled={state.submitting} className="submit">
-            {state.submitting ? "Submitting ..." : "Submit"}
-          </button>
-
-          {state.succeeded && (
-            <p
-              className="flex sub-title"
-              style={{ fontSize: "18px", marginTop: "1.7rem" }}
-            >
-              <Lottie
-                loop={false}
-                style={{ height: 37 }}
-                animationData={doneAnimation}
-              />
-              Your message has been sent successfully 👌
-            </p>
+          {!isSubmitted && (
+            <button type="submit" disabled={state.submitting} className="submit">
+              {state.submitting ? "Submitting ..." : "Submit"}
+            </button>
           )}
+
+          {state.succeeded || isSubmitted ? (
+            <p className="flex sub-title" style={{ fontSize: "18px", marginTop: "1.7rem" }}>
+              <Lottie loop={false} style={{ height: 37 }} animationData={doneAnimation} />
+              Your message has been sent successfully ✔️
+            </p>
+          ) : null}
         </form>
         <div className="animation">
-          <Lottie
-            className="contact-animation"
-            style={{ height: 355 }}
-            animationData={contactAnimation}
-          />
+          <Lottie className="contact-animation" style={{ height: 355 }} animationData={contactAnimation} />
         </div>
       </div>
     </section>

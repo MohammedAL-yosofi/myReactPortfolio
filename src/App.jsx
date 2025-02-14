@@ -100,7 +100,7 @@ function App() {
         <Header />
         <div>
           <Hero />
-          <div className="divider" />
+          <div className="divider" id="project" />
           <Main />
           <div className="divider" />
           <Contact />

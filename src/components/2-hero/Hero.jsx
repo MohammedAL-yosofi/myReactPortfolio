@@ -60,8 +60,7 @@ const Hero = () => {
         lottieRef={lottieRef}
         className=""
         onLoadedImages={() => {
-          // @ts-ignore
-          // https://lottiereact.com/
+
           lottieRef.current.setSpeed(0.5);
         }}
         animationData={devAnimation}
