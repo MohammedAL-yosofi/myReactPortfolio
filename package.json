@@ -14,11 +14,13 @@
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
+    "apify": "^3.2.6",
     "formik": "^2.4.6",
     "framer-motion": "^10.12.16",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "ua-parser-js": "^1.0.39",
     "yup": "^1.4.0"
   },
   "devDependencies": {

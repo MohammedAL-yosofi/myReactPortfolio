@@ -119,7 +119,7 @@ main section.right-section::before
   border-radius: 5px;
   height : 170px;
   object-fit:cover;
-  opject-position:top;
+  opject-position:center;
 }
 
 .card .box {
