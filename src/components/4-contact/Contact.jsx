@@ -6,7 +6,7 @@ import contactAnimation from "../../animation/contact.json";
 import { useEffect, useState } from "react";
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("myzglwqe");
+  const [state, handleSubmit] = useForm("ur-id");
   const [visitorID, setVisitorID] = useState(null);
   const [localTime, setLocalTime] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -37,7 +37,7 @@ const Contact = () => {
       formData.append("email", "no-reply@yourdomain.com");
       formData.append("localTime", userLocalTime);
 
-      fetch("https://formspree.io/f/myzglwqe", {
+      fetch("https://formspree.io/f/your-id", {
         method: "POST",
         body: formData,
         headers: {
