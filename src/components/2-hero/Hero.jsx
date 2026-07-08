@@ -19,9 +19,9 @@ const Hero = () => {
             initial={ { transform: "scale(0)" }}
             animate={ { transform: "scale(1.1)" }}
             transition={ { damping: 6, type: "spring", stiffness: 100 }}
-            src="./images/my1.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Y64mIZu0ItBuPQC-i7cikFfr40pGhtyFvFHAjynGrVkOVy4RP1TDwrw&s=10"
             className="avatar"
-            alt=""
+            alt="hero avatar"
             />
           <div className="icon-verified"></div>
         </div>
