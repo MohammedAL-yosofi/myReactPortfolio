@@ -33,7 +33,6 @@ This is a portfolio built with React.js to showcase some of my work. It includes
 ### Prerequisites
 
 - Required software: React.js, Vite.js, Formspree library, Lottie-react
-- Version requirements
 
 ## 🔒 License
 
